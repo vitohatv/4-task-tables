@@ -117,6 +117,7 @@ return (
       expandable={{ expandedRowRender }} 
       pagination={false}
       loading={loading}
+      className='table-second'
       scroll={{x: '100%'}}
     >
 
