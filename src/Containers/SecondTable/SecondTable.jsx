@@ -1,16 +1,12 @@
 import { Button, Skeleton, Table, Tag } from "antd";
 import Column from "antd/es/table/Column";
-import { useEffect, useState } from "react";
 import "./SecondTable.css";
 
 const SecondTable = () => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-
   return (
     <div style={{ width: "100%", maxWidth: 900 }}>
       <Table
-        dataSource={loading ? [{}, {}, {}, {}, {}] : data}
+        dataSource={[{}, {}, {}, {}, {}]}
         pagination={false}
         size="small"
         className="table-second"
