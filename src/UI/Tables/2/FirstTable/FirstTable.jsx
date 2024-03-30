@@ -1,5 +1,5 @@
-import { Skeleton, Table } from "antd";
-import "./FirstTable.css";
+import { Skeleton, Table } from 'antd';
+import './FirstTable.css';
 
 const FirstTable = () => {
   const columns = [
@@ -23,11 +23,13 @@ const FirstTable = () => {
     },
   ];
 
+
   return (
     <div style={{ maxWidth: 600 }}>
       <Table
         size="small"
-        dataSource={[{}, {}, {}, {}, {}, {}, {}]}
+        dataSource={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {},      
+        {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]}
         columns={columns}
         pagination={false}
         scroll={{ x: "100%" }}

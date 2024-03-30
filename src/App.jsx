@@ -1,5 +1,5 @@
-import FirstTable from './Containers/FirstTable/FirstTable';
-import SecondTable from './Containers/SecondTable/SecondTable';
+import FirstTable from './UI/Tables/2/FirstTable/FirstTable';
+import SecondTable from './UI/Tables/2/SecondTable/SecondTable';
 
 function App() {
   return (
