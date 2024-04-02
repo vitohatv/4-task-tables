@@ -11,7 +11,7 @@
 .table-second {
     margin-top: 70px;
 }
-.cl {
+.column-table {
     display: block;
     margin: 0 auto;
     margin-left: 20px;
@@ -58,17 +58,17 @@
 .amount-col {
     position: relative;
     top: 12px;
-    margin-left: 55px;
+    margin-left: 54px;
 }
 .input-amount {
-    margin-left: 15px;
+    margin-left: 18px;
 }
 
 
 .limit-col {
     position: relative;
     top: 12px;
-    margin-left: 50px;
+    margin-left: 45px;
 }
 .input-limit {
     margin-left: 10px;
@@ -76,7 +76,7 @@
 
 
 .market-col {
-    margin-left: 37px;
+    margin-left: 35px;
     position: relative;
     top: 12px;
 }

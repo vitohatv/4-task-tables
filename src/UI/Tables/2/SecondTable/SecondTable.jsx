@@ -46,17 +46,17 @@ const SecondTable = () => {
 
   const columns = [
     {
-      title: <Skeleton.Input className='cl' size='small' active />,
+      title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'price',
       key: 'price',
     },
     {
-      title: <Skeleton.Input className='cl' size='small' active />,
+      title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'amount',
       key: 'amount',
     },
     {
-      title: <Skeleton.Input className='cl' size='small' active />,
+      title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'total',
       key: 'total',
     },
