@@ -11,3 +11,75 @@
 .table-second {
     margin-top: 70px;
 }
+.cl {
+    display: block;
+    margin: 0 auto;
+    margin-left: 20px;
+}
+.table-elem {
+    margin-left: 40px;
+    position: relative;
+    top: 10px;
+    width: 200px;
+}
+.table-second {
+    max-width: 1200px;
+}
+.table-inner-market {
+    margin: 25px 25px 25px 1px;
+}
+
+.name-deals-col {
+    width: 290px;
+    min-width: 100px; 
+    position: absolute;
+    left: 35px;
+    top: 28px;
+}
+.input-deals {
+    max-width: 190px;
+    min-width: 100px;
+    position: relative;
+    opacity: 0;
+}
+
+
+.side-tags-col {
+    left: 70px;
+    width: 90px;
+    position: relative;
+    top: 12px; 
+}
+.input-tags {
+    margin-left: 15px;
+}
+
+
+.amount-col {
+    position: relative;
+    top: 12px;
+    margin-left: 55px;
+}
+.input-amount {
+    margin-left: 15px;
+}
+
+
+.limit-col {
+    position: relative;
+    top: 12px;
+    margin-left: 50px;
+}
+.input-limit {
+    margin-left: 10px;
+}
+
+
+.market-col {
+    margin-left: 37px;
+    position: relative;
+    top: 12px;
+}
+.input-market {
+    margin-left: 5px;
+}

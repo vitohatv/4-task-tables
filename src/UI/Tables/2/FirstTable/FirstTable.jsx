@@ -2,37 +2,59 @@ import { Skeleton, Table } from 'antd';
 import './FirstTable.css';
 
 const FirstTable = () => {
+  const data = Array.from({length: 20}, (_, i) => ({}));
+  data[9].space = true;
   const columns = [
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input size='small' className='sceleton-title-first' active />,
       dataIndex: "price",
       key: "price",
-      render: (text) => <Skeleton active paragraph={{ rows: 0 }} />,
+      render: (text, record, index) => {
+        if (record.space) {
+          return null;
+        } else {
+          return <Skeleton className='sceleton-text-first' active paragraph={{ rows: 0 }} />;
+        }
+      },
     },
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input size='small' className='sceleton-title-second' active />,
       dataIndex: "amount",
       key: "amount",
-      render: (text) => <Skeleton active paragraph={{ rows: 0 }} />,
+      render: (text, record, index) => {
+        if (record.space) {
+          return null;
+        } else {
+          return <Skeleton className='sceleton-text-second' active paragraph={{ rows: 0 }} />;
+        }
+      },
     },
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input 
+      size='small' 
+      className='sceleton-title-third' 
+      active         
+      />,
       dataIndex: "total",
       key: "total",
-      render: (text) => <Skeleton active paragraph={{ rows: 0 }} />,
+      render: (text, record, index) => {
+        if (record.space) {
+          return null;
+        } else {
+          return <Skeleton className='sceleton-text-third' active paragraph={{ rows: 0 }} />;
+        }
+      },
     },
   ];
 
 
   return (
-    <div style={{ maxWidth: 600 }}>
+    <div className='first-table-container'>
       <Table
-        size="small"
-        dataSource={[{}, {}, {}, {}, {}, {}, {}, {}, {}, {},      
-        {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]}
+        className='table-inner'
+        dataSource={data}
         columns={columns}
-        pagination={false}
-        scroll={{ x: "100%" }}
+        pagination={false} 
       />
     </div>
   );

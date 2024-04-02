@@ -5,57 +5,58 @@ const SecondTable = () => {
   const expandedRowRender = () => {
     const skeletonColumns = [
       {
-        title: <Skeleton.Input active />,
+        title: <Skeleton.Input className='input-deals' size='small' active />,
         dataIndex: 'nameDeal',
         key: 'nameDeal',
-        render: () => <Skeleton active paragraph={{ rows: 0, width:'300px' }} />
+        render: () => <Skeleton className='name-deals-col' active paragraph={{ rows: 0 }} />
       },
       {
-        title: <Skeleton.Input active />,
+        title: <Skeleton.Input className='input-tags' size='small' style={{ width: '50px' }} active />,
         dataIndex: 'side',
         key: 'side',
-        render: () => <Skeleton active paragraph={{ rows: 0 }} />
+        render: () => <Skeleton className='side-tags-col' active paragraph={{ rows: 0 }} />
       },
       {
-        title: <Skeleton.Input active />,
+        title: <Skeleton.Input className='input-amount' size='small' active />,
         dataIndex: 'amount',
         key: 'amount',
-        render: () => <Skeleton active paragraph={{ rows: 0 }} />
+        render: () => <Skeleton className='amount-col' active paragraph={{ rows: 0 }} />
       },
       {
-        title: <Skeleton.Input active />,
+        title: <Skeleton.Input className='input-limit' size='small' active />,
         dataIndex: 'limit',
         key: 'limit',
-        render: () => <Skeleton active paragraph={{ rows: 0 }} />
+        render: () => <Skeleton className='limit-col' active paragraph={{ rows: 0 }} />
       },
       {
-        title: <Skeleton.Input active />,
+        title: <Skeleton.Input className='input-market' size='small' active />,
         dataIndex: 'market',
         key: 'market',
-        render: () => <Skeleton active paragraph={{ rows: 0 }} />
+        render: () => <Skeleton className='market-col' active paragraph={{ rows: 0 }} />
       }
     ];
 
     return <Table 
     columns={skeletonColumns} 
     dataSource={[{},{}]} 
-    pagination={false} 
+    pagination={false}
+    className='table-inner-market'
     />;
   };
 
   const columns = [
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input className='cl' size='small' active />,
       dataIndex: 'price',
       key: 'price',
     },
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input className='cl' size='small' active />,
       dataIndex: 'amount',
       key: 'amount',
     },
     {
-      title: <Skeleton.Input active />,
+      title: <Skeleton.Input className='cl' size='small' active />,
       dataIndex: 'total',
       key: 'total',
     },
@@ -65,9 +66,9 @@ const SecondTable = () => {
   for (let i = 0; i < 3; i++) {
     data.push({
       key: i.toString(),
-      price: <Skeleton active paragraph={{ rows: 0 }} />,
-      amount: <Skeleton active paragraph={{ rows: 0 }} />,
-      total: <Skeleton active paragraph={{ rows: 0 }} />
+      price: <Skeleton className='table-elem' active paragraph={{ rows: 0 }} />,
+      amount: <Skeleton className='table-elem' active paragraph={{ rows: 0 }} />,
+      total: <Skeleton  className='table-elem' active paragraph={{ rows: 0 }} />
     });
   }
 
