@@ -1,40 +1,41 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .table-inner {
-    display: flex;
-    align-items: flex-end;
-    max-width: 800px;
+  display: flex;
+  align-items: flex-end;
+  max-width: 100px;
 }
 
 .sceleton-title-first {
-    max-width: 300px;
+  max-width: 300px;
 }
 .sceleton-title-second {
-    margin: 2px 4px;
+  margin: 2px 4px;
 }
 .sceleton-title-third {
-    margin: 1px 1px 1px;
-    max-width: 200px;
+  margin: 1px 1px 1px;
+  max-width: 200px;
 }
 
 .sceleton-text-first {
-    max-width: 200px;
-    position: relative;
-    top: 12px;
-} 
+  max-width: 200px;
+  position: relative;
+  top: 12px;
+}
 .sceleton-text-second {
-    max-width: 200px;
-    position: relative;
-    top: 12px;
-    left: 40px;
+  max-width: 200px;
+  position: relative;
+  top: 12px;
+  left: 40px;
 }
 .sceleton-text-third {
-    max-width: 200px;
-    position: absolute;
-    top: 28px;
-    left: 75px;
-} 
+  max-width: 200px;
+  height: 5px;
+  position: absolute;
+  top: 28px;
+  left: 75px;
+}
