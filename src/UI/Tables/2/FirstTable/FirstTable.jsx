@@ -11,7 +11,7 @@ const FirstTable = () => {
       ),
       dataIndex: "price",
       key: "price",
-      align: "center",
+      align: "left",
       render: (text, record, index) => {
         if (record.space) {
           return null;
@@ -41,7 +41,7 @@ const FirstTable = () => {
       ),
       dataIndex: "total",
       key: "total",
-      align: "center",
+      align: "right",
       render: (text, record, index) => {
         if (record.space) {
           return null;
@@ -53,9 +53,9 @@ const FirstTable = () => {
   ];
 
   return (
-    <div className="first-table-container">
+    <div style={{ maxWidth: 350 }}>
       <Table
-        className="table-inner"
+        scroll={{ x: "100%", y: "900px" }}
         dataSource={data}
         columns={columns}
         pagination={false}
