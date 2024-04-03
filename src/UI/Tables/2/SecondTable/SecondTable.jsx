@@ -2,6 +2,7 @@ import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { Skeleton, Table } from 'antd';
 import './SecondTable.css';
 
+
 const SecondTable = () => {
   const expandedRowRender = () => {
     const skeletonColumns = [
@@ -41,7 +42,6 @@ const SecondTable = () => {
         render: () => <Skeleton.Button active={true} style={{width: '70px'}} size="small" />
       }
     ];
-
     return <Table 
     columns={skeletonColumns} 
     dataSource={[{},{}]} 
@@ -97,5 +97,4 @@ const SecondTable = () => {
     </div>
   );
 };
-
 export default SecondTable;
