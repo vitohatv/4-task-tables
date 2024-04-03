@@ -17,10 +17,11 @@
     margin-left: 20px;
 }
 .table-elem {
-    margin-left: 40px;
-    position: relative;
+    margin-left: 33px;
     top: 10px;
     width: 200px;
+    display: flex;
+    align-items: center;
 }
 .table-second {
     max-width: 1200px;
@@ -30,16 +31,10 @@
 }
 
 .name-deals-col {
-    width: 290px;
-    min-width: 100px; 
-    position: absolute;
     left: 35px;
-    top: 28px;
+    top: 20px;
 }
 .input-deals {
-    max-width: 190px;
-    min-width: 100px;
-    position: relative;
     opacity: 0;
 }
 
@@ -50,9 +45,6 @@
     position: relative;
     top: 12px; 
 }
-.input-tags {
-    margin-left: 15px;
-}
 
 
 .amount-col {
@@ -60,18 +52,12 @@
     top: 12px;
     margin-left: 54px;
 }
-.input-amount {
-    margin-left: 18px;
-}
 
 
 .limit-col {
     position: relative;
     top: 12px;
-    margin-left: 45px;
-}
-.input-limit {
-    margin-left: 10px;
+    margin: 0 auto;
 }
 
 
@@ -80,6 +66,9 @@
     position: relative;
     top: 12px;
 }
-.input-market {
-    margin-left: 5px;
+
+.arrow-table {
+    cursor: pointer;
+    z-index: 2;
+    top: 25px;
 }

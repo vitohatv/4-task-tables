@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.3.6",
     "@nivo/bar": "^0.85.1",
     "@nivo/pie": "^0.85.1",
     "@testing-library/jest-dom": "^5.17.0",

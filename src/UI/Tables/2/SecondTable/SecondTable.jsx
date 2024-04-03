@@ -1,3 +1,4 @@
+import { DownOutlined, RightOutlined } from '@ant-design/icons';
 import { Skeleton, Table } from 'antd';
 import './SecondTable.css';
 
@@ -8,31 +9,36 @@ const SecondTable = () => {
         title: <Skeleton.Input className='input-deals' size='small' active />,
         dataIndex: 'nameDeal',
         key: 'nameDeal',
-        render: () => <Skeleton className='name-deals-col' active paragraph={{ rows: 0 }} />
+        align: "center",
+        render: () => <Skeleton.Input className='name-deals-col' size='small' active paragraph={{ rows: 0 }} />
       },
       {
         title: <Skeleton.Input className='input-tags' size='small' style={{ width: '50px' }} active />,
         dataIndex: 'side',
         key: 'side',
-        render: () => <Skeleton className='side-tags-col' active paragraph={{ rows: 0 }} />
+        align: "center",
+        render: () => <Skeleton.Button active={true} size="small" />
       },
       {
         title: <Skeleton.Input className='input-amount' size='small' active />,
         dataIndex: 'amount',
         key: 'amount',
-        render: () => <Skeleton className='amount-col' active paragraph={{ rows: 0 }} />
+        align: "center",
+        render: () => <Skeleton.Button active={true} size="small" />
       },
       {
         title: <Skeleton.Input className='input-limit' size='small' active />,
         dataIndex: 'limit',
         key: 'limit',
-        render: () => <Skeleton className='limit-col' active paragraph={{ rows: 0 }} />
+        align: "center",
+        render: () => <Skeleton.Button active={true} style={{width: '70px'}} size="small" />
       },
       {
         title: <Skeleton.Input className='input-market' size='small' active />,
         dataIndex: 'market',
         key: 'market',
-        render: () => <Skeleton className='market-col' active paragraph={{ rows: 0 }} />
+        align: "center",
+        render: () => <Skeleton.Button active={true} style={{width: '70px'}} size="small" />
       }
     ];
 
@@ -48,17 +54,17 @@ const SecondTable = () => {
     {
       title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'price',
-      key: 'price',
+      key: 'price'
     },
     {
       title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'amount',
-      key: 'amount',
+      key: 'amount'
     },
     {
       title: <Skeleton.Input className='column-table' size='small' active />,
       dataIndex: 'total',
-      key: 'total',
+      key: 'total'
     },
   ]
 
@@ -66,17 +72,24 @@ const SecondTable = () => {
   for (let i = 0; i < 3; i++) {
     data.push({
       key: i.toString(),
-      price: <Skeleton className='table-elem' active paragraph={{ rows: 0 }} />,
-      amount: <Skeleton className='table-elem' active paragraph={{ rows: 0 }} />,
-      total: <Skeleton  className='table-elem' active paragraph={{ rows: 0 }} />
+      price:  <Skeleton.Button className='table-elem' active paragraph={{ rows: 0 }}  />,
+      amount: <Skeleton.Button className='table-elem' active paragraph={{ rows: 0 }}  />,
+      total:  <Skeleton.Button className='table-elem' active paragraph={{ rows: 0 }}  />
     });
   }
 
   return (
-    <div className='table-second'>
+    <div className='table-second' style={{ maxWidth: 850 }}>
       <Table
         columns={columns}
-        expandable={{expandedRowRender}}
+        expandable={{expandedRowRender, 
+        defaultExpandAllRows: true, 
+        expandIcon:({ expanded, onExpand, record }) => (
+            <div className='arrow-table' onClick={e => onExpand(record, e)}>
+              {expanded ? <DownOutlined /> : <RightOutlined />}
+            </div>
+            )
+          }}
         dataSource={data}
         pagination={false}
         scroll={{ x: "100%" }}
