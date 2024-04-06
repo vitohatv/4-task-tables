@@ -83,7 +83,7 @@ const SecondTable = () => {
       <Table
         columns={columns}
         expandable={{expandedRowRender, 
-        defaultExpandAllRows: true, 
+        defaultExpandedRowKeys: '0',
         expandIcon:({ expanded, onExpand, record }) => (
             <div className='arrow-table' onClick={e => onExpand(record, e)}>
               {expanded ? <DownOutlined /> : <RightOutlined />}

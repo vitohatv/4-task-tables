@@ -1,11 +1,9 @@
-import FirstTable from './UI/Tables/2/FirstTable/FirstTable';
-import SecondTable from './UI/Tables/2/SecondTable/SecondTable';
+import BlocksPage from "./UI/Blocks/1/BlocksPage";
 
 function App() {
   return (
     <div className="App">
-      <FirstTable  />
-      <SecondTable />
+      <BlocksPage/>
     </div>
   );
 }
