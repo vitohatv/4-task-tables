@@ -1,5 +1,5 @@
 import { ResponsiveLine } from '@nivo/line';
-import { Alert, Button, Col, Row, Select } from 'antd';
+import { Alert, Button, Col, Row, Select, Space } from 'antd';
 import './graphic.css';
 
 const LineChart = ({ data }) => {
@@ -7,6 +7,25 @@ const LineChart = ({ data }) => {
     x: item.block_time,
     y: (item.eth_price * item.profit).toFixed(2)
   }));
+
+  const options = [
+    {
+      label: 'Arctic Bastion',
+      value: 'Arctic Bastion',
+      desc: 'Arctic Bastion'
+    },
+    {
+      label: 'The T Resolver',
+      value: 'The T Resolver',
+      desc:  'The T Resolver'
+    },
+    {
+      label: 'Seawise',
+      value: 'Seawise',
+      desc:  'Seawise'
+    }
+  ];
+
 
   return(
         <div className="main">
@@ -16,18 +35,22 @@ const LineChart = ({ data }) => {
                       <Row gutter={1}>
                           <Col span={9}>
                           <Select
-                                defaultValue="Tags"
-                                style={{
-                                  width: 400,
-                                  textAlign: 'center'
-                                }}
-                                options={[
-                                  {
-                                    value: 'Resolvers',
-                                    label: 'Resolvers',
-                                  }
-                                ]}
-                              />
+                            mode="multiple"
+                            style={{
+                              width: 400,
+                            }}
+                            placeholder="select one country"
+                            defaultValue={['Arctic Bastion', 'The T Resolver', 'Seawise']}
+                            options={options}
+                            optionRender={(option) => (
+                              <Space>
+                                <span role="img" aria-label={option.data.label}>
+                                  {option.data.emoji}
+                                </span>
+                                {option.data.desc}
+                              </Space>
+                            )}
+                          />
                           </Col>
                           <Col span={9}>
                           <Select
