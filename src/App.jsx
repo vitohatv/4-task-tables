@@ -1,9 +1,10 @@
-import BlocksPage from "./UI/Blocks/1/BlocksPage";
+import LineChart from "./UI/Graphics/3/graphic";
+import { data } from './UI/Graphics/3/data';
 
 function App() {
   return (
     <div className="App">
-      <BlocksPage/>
+      <LineChart data={data} />
     </div>
   );
 }
