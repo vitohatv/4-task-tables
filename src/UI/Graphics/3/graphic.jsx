@@ -1,31 +1,36 @@
-import { ResponsiveLine } from '@nivo/line';
-import { Alert, Button, Col, Row, Select, Space } from 'antd';
+import { ResponsivePie } from '@nivo/pie';
+import { Alert, Button, Col, Row, Select } from 'antd';
 import './graphic.css';
 
-const LineChart = ({ data }) => {
-  const formattedData = data.map(item => ({
-    x: item.block_time,
-    y: (item.eth_price * item.profit).toFixed(2)
+const LineChart = ({ data, optionsValues }) => {
+
+  const { Option } = Select;
+
+  const resolverData = {};
+  data.forEach(item => {
+    const profit = item.profit * item.eth_price
+    resolverData[item.resolver] = resolverData[item.resolver] ? resolverData[item.resolver] + profit : profit;
+  });
+
+  const resolverChartData = Object.keys(resolverData).map(resolver => ({
+    id: resolver,
+    label: resolver,
+    value: resolverData[resolver].toFixed(2),
   }));
 
-  const options = [
-    {
-      label: 'Arctic Bastion',
-      value: 'Arctic Bastion',
-      desc: 'Arctic Bastion'
-    },
-    {
-      label: 'The T Resolver',
-      value: 'The T Resolver',
-      desc:  'The T Resolver'
-    },
-    {
-      label: 'Seawise',
-      value: 'Seawise',
-      desc:  'Seawise'
-    }
-  ];
+  const ourResolverData = data.filter(item => item.resolver);
 
+  const valueCodeData = {};
+  ourResolverData.forEach(item => {
+    const profit = item.profit * item.eth_price;
+    valueCodeData[item.value] = valueCodeData[item.value] ? valueCodeData[item.value] + profit : profit;
+  });
+
+  const valueCodeChartData = Object.keys(valueCodeData).map(value => ({
+    id: value,
+    label: optionsValues.find(option => option.value === value)?.text || value,
+    value: valueCodeData[value].toFixed(2),
+  })); 
 
   return(
         <div className="main">
@@ -36,20 +41,14 @@ const LineChart = ({ data }) => {
                           <Col span={9}>
                           <Select
                             mode="multiple"
-                            style={{
-                              width: 400,
-                            }}
-                            placeholder="select one country"
-                            defaultValue={['Arctic Bastion', 'The T Resolver', 'Seawise']}
-                            options={options}
-                            optionRender={(option) => (
-                              <Space>
-                                <span role="img" aria-label={option.data.label}>
-                                  {option.data.desc}
-                                </span>
-                              </Space>
-                            )}
-                          />
+                            style={{ width: 400 }}
+                            placeholder="Select companies"
+                          >
+                            <Option value="Arctic Bastion">Arctic Bastion</Option>
+                            <Option value="The T Resolver">The T Resolver</Option>
+                            <Option value="Seawise">Seawise</Option>
+                            <Option value="1inch Labs">1inch Labs</Option>
+                          </Select>
                           </Col>
                           <Col span={9}>
                           <Select
@@ -114,65 +113,51 @@ const LineChart = ({ data }) => {
                     
                     <Button className='btn-start' type="primary">start</Button>
 
-                    <div style={{height: '680px', marginTop: '45px'}}>
-                    <ResponsiveLine
-                      data={[{ id: 'profit', data: formattedData }]}
-                      margin={{ top: 50, right: 90, bottom: 50, left: 60 }}
-                      xScale={{ type: 'point' }}
-                      yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
-                      axisTop={null}
-                      axisRight={null}
-                      axisBottom={{
-                        orient: 'bottom',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: -45,
-                        legendOffset: 36,
-                        legendPosition: 'middle'
-                      }}
-                      axisLeft={{
-                        orient: 'left',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        tickRotation: 0,
-                        legend: 'Profit',
-                        legendOffset: -40,
-                        legendPosition: 'middle'
-                      }}
-                      colors={{ scheme: 'category10' }}
-                      pointSize={10}
-                      pointColor={{ theme: 'background' }}
-                      pointBorderWidth={2}
-                      pointBorderColor={{ from: 'serieColor' }}
-                      pointLabelYOffset={-12}
-                      useMesh={true}
-                      legends={[
-                        {
-                          anchor: 'bottom-right',
-                          direction: 'column',
-                          justify: false,
-                          translateX: 100,
-                          translateY: 0,
-                          itemsSpacing: 0,
-                          itemDirection: 'left-to-right',
-                          itemWidth: 80,
-                          itemHeight: 20,
-                          itemOpacity: 0.75,
-                          symbolSize: 12,
-                          symbolShape: 'circle',
-                          symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                          effects: [
-                            {
-                              on: 'hover',
-                              style: {
-                                itemBackground: 'rgba(0, 0, 0, .03)',
-                                itemOpacity: 1
-                              }
-                            }
-                          ]
-                        }
-                      ]}
+                    <div style={{display:'flex', justifyContent: 'space-between', height: '400px', marginTop: '45px' }}>
+                    
+                    <ResponsivePie
+                        data={valueCodeChartData}
+                        keys={['value']}
+                        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+                        innerRadius={0.5}
+                        padAngle={0.7}
+                        cornerRadius={3}
+                        colors={{ scheme: 'paired' }}
+                        borderWidth={1}
+                        borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+                        radialLabelsSkipAngle={10}
+                        radialLabelsTextXOffset={6}
+                        radialLabelsTextColor="#333333"
+                        radialLabelsLinkOffset={0}
+                        radialLabelsLinkDiagonalLength={16}
+                        radialLabelsLinkHorizontalLength={24}
+                        radialLabelsLinkStrokeWidth={1}
+                        radialLabelsLinkColor={{ from: 'color' }}
+                        sliceLabelsSkipAngle={10}
+                        sliceLabelsTextColor="#333333"
                     />
+            
+                    <ResponsivePie
+                          data={resolverChartData}
+                          keys={['value']}
+                          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+                          innerRadius={0.5}
+                          padAngle={0.7}
+                          cornerRadius={3}
+                          colors={{ scheme: 'paired' }}
+                          borderWidth={1}
+                          borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
+                          radialLabelsSkipAngle={10}
+                          radialLabelsTextXOffset={6}
+                          radialLabelsTextColor="#333333"
+                          radialLabelsLinkOffset={0}
+                          radialLabelsLinkDiagonalLength={16}
+                          radialLabelsLinkHorizontalLength={24}
+                          radialLabelsLinkStrokeWidth={1}
+                          radialLabelsLinkColor={{ from: 'color' }}
+                          sliceLabelsSkipAngle={10}
+                          sliceLabelsTextColor="#333333"
+                      />
                     </div>
                 </div> 
             </div>
