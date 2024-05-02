@@ -2,7 +2,7 @@ import { ResponsivePie } from '@nivo/pie';
 import { Alert, Button, Col, Row, Select } from 'antd';
 import './graphic.css';
 
-const LineChart = ({ data, optionsValues }) => {
+const LineChart = ({ data }) => {
 
   const { Option } = Select;
 
@@ -28,7 +28,6 @@ const LineChart = ({ data, optionsValues }) => {
 
   const valueCodeChartData = Object.keys(valueCodeData).map(value => ({
     id: value,
-    label: optionsValues.find(option => option.value === value)?.text || value,
     value: valueCodeData[value].toFixed(2),
   })); 
 
